@@ -1,6 +1,7 @@
 import { Weapon } from "types/weapon";
 import { WeaponFilterState } from "reducers/weaponFilters";
 import { BrowserSettings } from "reducers/browser";
+import { sortBy } from "./utils";
 
 export const filterWeapons = (
     weapons: Weapon[],
@@ -40,38 +41,40 @@ export const filterWeapons = (
         );
     }
 
+    const reverse = sortSettings.sortDirection === "desc";
+
     switch (sortSettings.sortBy) {
         case "name":
             weps = weps.sort((a, b) =>
                 a.displayName.localeCompare(b.displayName)
             );
+            if (reverse) {
+                weps = weps.reverse();
+            }
             break;
         case "rarity":
             weps = weps.sort(
                 (a, b) =>
-                    b.rarity - a.rarity ||
+                    sortBy(a.rarity, b.rarity, reverse) ||
                     a.displayName.localeCompare(b.displayName)
             );
             break;
         case "weapon":
             weps = weps.sort(
                 (a, b) =>
-                    a.type.localeCompare(b.type) ||
+                    sortBy(b.type, a.type, reverse) ||
                     a.displayName.localeCompare(b.displayName)
             );
             break;
         case "release":
             weps = weps.sort(
                 (a, b) =>
-                    b.id - a.id || a.displayName.localeCompare(b.displayName)
+                    sortBy(a.id, b.id, reverse) ||
+                    b.displayName.localeCompare(a.displayName)
             );
             break;
         case "element":
             break;
-    }
-
-    if (sortSettings.sortDirection === "desc") {
-        weps = weps.reverse();
     }
 
     return weps;

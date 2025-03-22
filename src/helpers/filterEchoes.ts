@@ -2,6 +2,7 @@ import { Echo } from "../types/echo";
 import { EchoFilterState } from "reducers/echoFilters";
 import { BrowserSettings } from "reducers/browser";
 import { echoes as echoData } from "data/common";
+import { sortBy } from "./utils";
 
 export const filterEchoes = (
     echoes: Echo[],
@@ -34,32 +35,37 @@ export const filterEchoes = (
         );
     }
 
+    const reverse = sortSettings.sortDirection === "desc";
+
     switch (sortSettings.sortBy) {
         case "name":
             echos = echos.sort((a, b) =>
                 a.displayName.localeCompare(b.displayName)
             );
+            if (reverse) {
+                echos = echos.reverse();
+            }
             break;
         case "rarity":
             echos = echos.sort(
                 (a, b) =>
-                    echoData[b.class].rarity - echoData[a.class].rarity ||
-                    a.displayName.localeCompare(b.displayName)
+                    sortBy(
+                        echoData[a.class].rarity,
+                        echoData[b.class].rarity,
+                        reverse
+                    ) || a.displayName.localeCompare(b.displayName)
             );
             break;
         case "release":
             echos = echos.sort(
                 (a, b) =>
-                    b.id - a.id || a.displayName.localeCompare(b.displayName)
+                    sortBy(a.id, b.id, reverse) ||
+                    a.displayName.localeCompare(b.displayName)
             );
             break;
         case "element":
         case "weapon":
             break;
-    }
-
-    if (sortSettings.sortDirection === "desc") {
-        echos = echos.reverse();
     }
 
     return echos;
