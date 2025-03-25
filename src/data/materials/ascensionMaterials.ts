@@ -132,7 +132,7 @@ export const ascensionMaterials = [
         name: "Seaside Cendrelis",
         displayName: "Seaside Cendrelis",
         rarity: 1,
-        release: { version: "2.0" },
+        release: { version: "2.2" },
     },
 ] as const;
 

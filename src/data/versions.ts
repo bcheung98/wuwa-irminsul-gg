@@ -1,5 +1,6 @@
 // MAKE SURE TO CHANGE THIS EVERY UPDATE!
 export const updates = [
+    { version: "2.2", name: "Tangled Truth in Inverted Tower" },
     { version: "2.1", name: "Waves Sing, and the Cerulean Bird Calls" },
     { version: "2.0", name: "All Silent Souls Can Sing" },
     { version: "1.4", name: "When the Night Knocks" },
