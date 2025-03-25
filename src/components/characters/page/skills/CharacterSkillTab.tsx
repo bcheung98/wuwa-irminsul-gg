@@ -64,7 +64,7 @@ function CharacterSkillTab({
                 <TextStyled sx={{ mb: "8px", fontStyle: "italic" }}>
                     {formatSkillKey(skillKey)}
                 </TextStyled>
-                <TextStyled variant="h5-styled" sx={{ mb: "16px" }}>
+                <TextStyled variant="h6-styled" sx={{ mb: "8px" }}>
                     {skill.name}
                 </TextStyled>
                 <Text component="span" sx={{ color: theme.text.description }}>
