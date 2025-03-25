@@ -86,7 +86,7 @@ function BrowserSort({ type, options }: BrowserSortProps) {
                     {options.map((option, index) => (
                         <StyledMenuItem key={index} value={option}>
                             <TextStyled sx={{ textTransform: "capitalize" }}>
-                                {formatOption(option)}
+                                {formatOption(type, option)}
                             </TextStyled>
                         </StyledMenuItem>
                     ))}
@@ -115,13 +115,14 @@ function BrowserSort({ type, options }: BrowserSortProps) {
 
 export default BrowserSort;
 
-function formatOption(option: SortBy) {
+function formatOption(type: SortType, option: SortBy) {
     switch (option) {
         case "element":
             return "Attribute";
         case "release":
             return "Release Date";
         case "rarity":
+            return type === "echoes" ? "Class" : option;
         case "name":
         case "weapon":
             return option;
