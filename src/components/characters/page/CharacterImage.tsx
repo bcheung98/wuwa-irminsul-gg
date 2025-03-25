@@ -223,7 +223,7 @@ function CharacterImage({ character }: CharacterProps) {
                                             },
                                         }}
                                     >
-                                        <TextStyled variant="h4-styled">
+                                        <TextStyled variant="h6-styled">
                                             {outfit.displayName}
                                         </TextStyled>
                                         <Text
