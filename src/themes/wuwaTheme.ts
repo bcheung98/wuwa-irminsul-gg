@@ -31,6 +31,10 @@ export const wuwaThemeData = {
     name: "WuWa",
     background: (index: number, shade?: Shade) =>
         getThemeBackgroundColors({ colors: backgroundColors, index, shade }),
+    backgroundImageColors: ["rgb(10, 8, 5)", "rgba(156, 113, 48, 0.2)"],
+    backgroundImageURL:
+        "https://assets.irminsul.gg/wuwa/images/WuWa_Background.png",
+    backgroundImageAlpha: 0.75,
     palette: {
         primary: {
             main: "rgb(16, 16, 16)",
@@ -50,11 +54,11 @@ export const wuwaThemeData = {
     },
     font: {
         main: {
-            family: "Rowdies, Roboto, sans-serif",
+            family: "WuWa, Roboto, sans-serif",
             weight: 300,
         },
         styled: {
-            family: "Rowdies, Roboto, sans-serif",
+            family: "WuWa, Roboto, sans-serif",
             weight: 300,
         },
         element: {

@@ -18,6 +18,11 @@ ul {
     padding-left: 18px;
 }
 
+@font-face {
+    font-family: "WuWa";
+    src: url("./fonts/LaguSansBold.ttf");
+}
+
 ::-webkit-scrollbar {
     width: 10px;
     height: 10px;
