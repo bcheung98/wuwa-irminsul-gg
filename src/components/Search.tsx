@@ -485,6 +485,7 @@ function Search() {
                 maxWidth="sm"
                 fullWidth
                 fullScreen={!matches_up_sm}
+                disableScrollLock
                 scroll={hits ? "paper" : "body"}
                 sx={{ backdropFilter: "blur(4px)" }}
                 onKeyDown={(event) => {
