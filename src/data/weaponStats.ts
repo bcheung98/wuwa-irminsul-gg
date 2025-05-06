@@ -79,3 +79,16 @@ export const subStats: Record<WeaponBaseATK, WeaponSubStatInfo> = {
         "ATK": ["2.5%", "4.5%", "4.5%", "6.5%", "6.5%", "7.5%", "7.5%", "8.4%", "8.4%", "9.4%"],
     },
 };
+
+export function formatWeaponStats(stat: WeaponSubStat) {
+    switch (stat) {
+        case "ATK":
+        case "HP":
+        case "DEF":
+            return `${stat}%`;
+        case "Crit Rate":
+        case "Crit DMG":
+        case "Energy Regen":
+            return stat;
+    }
+}

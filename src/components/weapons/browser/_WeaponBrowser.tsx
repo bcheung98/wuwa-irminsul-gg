@@ -163,7 +163,10 @@ function WeaponBrowser() {
                             displayName={weapon.displayName}
                             type="weapon"
                             rarity={weapon.rarity}
-                            info={{ weaponType: weapon.type }}
+                            info={{
+                                weaponType: weapon.type,
+                                subStat: weapon.stats.subStat,
+                            }}
                         />
                     ))}
                 </Grid>

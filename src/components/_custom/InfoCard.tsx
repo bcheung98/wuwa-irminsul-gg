@@ -24,6 +24,7 @@ import { getAscensionMaterial } from "data/materials/ascensionMaterials";
 import { Element, Rarity, WeaponType } from "types/_common";
 import { EchoCost, EchoSonata } from "types/echo";
 import { CharacterMaterials } from "types/materials";
+import { formatWeaponStats, WeaponSubStat } from "data/weaponStats";
 
 interface InfoCardProps {
     name: string;
@@ -37,6 +38,7 @@ interface InfoCardProps {
     info?: {
         element?: Element;
         weaponType?: WeaponType;
+        subStat?: WeaponSubStat;
         sonata?: EchoSonata[];
     };
     infoSecondary?: {
@@ -243,6 +245,14 @@ function InfoCard({
                                     alt={info.weaponType}
                                     style={infoIconStyle}
                                     tooltip={info.weaponType}
+                                />
+                            )}
+                            {info.subStat && (
+                                <Image
+                                    src={`stat_icons/${info.subStat}`}
+                                    alt={info.subStat}
+                                    style={infoIconStyle}
+                                    tooltip={formatWeaponStats(info.subStat)}
                                 />
                             )}
                             {info.sonata !== undefined &&
