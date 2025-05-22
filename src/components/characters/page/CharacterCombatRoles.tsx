@@ -48,8 +48,8 @@ function CharacterCombatRoles({ roles }: { roles: CombatRole[] }) {
                             src={`tags/${role}`}
                             alt={role}
                             style={{
-                                width: matches_sm_up ? "40px" : "32px",
-                                height: matches_sm_up ? "40px" : "32px",
+                                width: matches_sm_up ? "36px" : "32px",
+                                height: matches_sm_up ? "36px" : "32px",
                                 padding: "4px",
                                 border: `2px solid ${combatRoles[role].color}`,
                                 borderRadius: "4px",
@@ -66,7 +66,7 @@ function CharacterCombatRoles({ roles }: { roles: CombatRole[] }) {
                 >
                     <IconButton disableRipple onClick={handleClickOpen}>
                         <InfoOutlinedIcon
-                            sx={{ fontSize: matches_sm_up ? "32px" : "24px" }}
+                            sx={{ fontSize: matches_sm_up ? "28px" : "24px" }}
                         />
                     </IconButton>
                 </StyledTooltip>
