@@ -138,6 +138,16 @@ export const bossMaterials = [
         rarity: 4,
         release: { version: "2.0" },
     },
+    {
+        id: "bossMat_14",
+        category: "bossMat",
+        tag: "bossMat_14",
+        name: "bossMat_14",
+        displayName: "bossMat_14",
+        source: "???",
+        rarity: 4,
+        release: { version: "2.4" },
+    },
 ] as const;
 
 export const bossMatNames = bossMaterials.map((mat) => mat.tag);
