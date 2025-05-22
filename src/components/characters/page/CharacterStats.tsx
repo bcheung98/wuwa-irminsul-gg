@@ -1,4 +1,4 @@
-import React from "react";
+import { BaseSyntheticEvent, useEffect, useState } from "react";
 
 // Component imports
 import MainContentBox from "custom/MainContentBox";
@@ -22,15 +22,29 @@ function CharacterStats({ character }: CharacterProps) {
     const { stats, element } = character;
 
     const currentSkillDisplay = useAppSelector(selectSkillDisplay);
-    const [mode, setMode] = React.useState<SkillDisplay>(currentSkillDisplay);
-    const handleMode = (_: React.BaseSyntheticEvent, newView: SkillDisplay) => {
+    const [mode, setMode] = useState<SkillDisplay>(currentSkillDisplay);
+    const handleMode = (_: BaseSyntheticEvent, newView: SkillDisplay) => {
         if (newView !== null) {
             setMode(newView);
         }
     };
 
-    // const levels = ["1", "20", "20+", "40", "40+", "50", "50+", "60", "60+", "70", "70+", "80", "80+", "90"]
-    const levels = ["1", "20", "40", "50", "60", "70", "80", "90"];
+    const levels = [
+        "1",
+        "20",
+        "20+",
+        "40",
+        "40+",
+        "50",
+        "50+",
+        "60",
+        "60+",
+        "70",
+        "70+",
+        "80",
+        "80+",
+        "90",
+    ];
 
     const data = [
         ["Level", ...levels],
@@ -54,7 +68,7 @@ function CharacterStats({ character }: CharacterProps) {
         ],
     ];
 
-    React.useEffect(() => {
+    useEffect(() => {
         setMode(currentSkillDisplay);
     }, [currentSkillDisplay]);
 
