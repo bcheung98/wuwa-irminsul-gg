@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 
 // Component imports
 import MainContentBox from "custom/MainContentBox";
@@ -22,7 +22,7 @@ function EchoSkill({ echo }: EchoProps) {
 
     const { name, skill } = echo;
 
-    const [sliderValue, setSliderValue] = React.useState(5);
+    const [sliderValue, setSliderValue] = useState(5);
     const handleSliderChange = (_: Event, newValue: number | number[]) => {
         setSliderValue(newValue as number);
     };
@@ -64,7 +64,7 @@ function EchoSkill({ echo }: EchoProps) {
                             height: "48px",
                             padding: "4px",
                             border: `2px solid ${theme.border.color.primary}`,
-                            borderRadius: "64px",
+                            borderRadius: "8px",
                             backgroundColor: theme.icon.backgroundColor,
                         }}
                     />
