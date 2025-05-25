@@ -74,4 +74,14 @@ export const sonataEffects = {
         "2pc": '<span class="text-aero">Aero DMG</span> +10%.',
         "5pc": 'Inflicting <span class="text-aero">Aero Erosion</span> upon enemies increases <span class="text-aero">Aero DMG</span> for all Resonators in the team by 15%, and for the Resonator triggering this effect by an additional 15%, lasting for 20s.',
     },
+    "Windward Pilgrimage": {
+        displayName: "Windward Pilgrimage",
+        "2pc": '<span class="text-aero">Aero DMG</span> +10%.',
+        "5pc": 'Hitting a target with <span class="text-aero">Aero Erosion</span> increases Crit. Rate by 10% and grants <span class="text-aero">Aero DMG Bonus</span>, lasting for 10s.',
+    },
+    "Flaming Clawprint": {
+        displayName: "Flaming Clawprint",
+        "2pc": '<span class="text-fusion">Fusion DMG</span> +10%.',
+        "5pc": 'Casting Resonance Liberation increases <span class="text-fusion">Fusion DMG</span> of Resonators in the team by 15% and the caster\'s Resonance Liberation DMG by 20%, lasting for 35s.',
+    },
 };
