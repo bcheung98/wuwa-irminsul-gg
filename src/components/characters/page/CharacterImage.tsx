@@ -1,4 +1,5 @@
-import React from "react";
+import { BaseSyntheticEvent, useState } from "react";
+import parse from "html-react-parser";
 
 // Component imports
 import Image from "custom/Image";
@@ -17,7 +18,6 @@ import {
     Dialog,
     Box,
     IconButton,
-    Stack,
     Fade,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
@@ -33,7 +33,7 @@ function CharacterImage({ character }: CharacterProps) {
 
     const { outfits } = character;
 
-    const [dialogOpen, setDialogOpen] = React.useState(false);
+    const [dialogOpen, setDialogOpen] = useState(false);
     const handleDialogOpen = () => {
         setDialogOpen(true);
     };
@@ -41,8 +41,8 @@ function CharacterImage({ character }: CharacterProps) {
         setDialogOpen(false);
     };
 
-    const [tabValue, setTabValue] = React.useState(0);
-    const handleTabChange = (_: React.SyntheticEvent, newValue: number) => {
+    const [tabValue, setTabValue] = useState(0);
+    const handleTabChange = (_: BaseSyntheticEvent, newValue: number) => {
         setTabValue(newValue);
     };
     const handleTabChangeLeft = () => {
@@ -70,10 +70,15 @@ function CharacterImage({ character }: CharacterProps) {
         },
     };
 
+    const imgSrcAvatar =
+        tabValue === 0
+            ? `characters/avatars/${character.name}`
+            : `characters/outfits/avatar/${outfits[tabValue].name}`;
+
     const imgSrcSplash =
         tabValue === 0
-            ? `characters/portraits/${character.name}`
-            : `characters/outfits/portrait/${outfits[tabValue].name}`;
+            ? `characters/splash/${character.name}`
+            : `characters/outfits/splash/${outfits[tabValue].name}`;
 
     return (
         <>
@@ -85,7 +90,7 @@ function CharacterImage({ character }: CharacterProps) {
                 }}
             >
                 <Image
-                    src={imgSrcSplash}
+                    src={imgSrcAvatar}
                     alt={character.name}
                     style={{
                         width: "100%",
@@ -135,7 +140,7 @@ function CharacterImage({ character }: CharacterProps) {
                 fullWidth
                 keepMounted
             >
-                <Box sx={{ overflowY: "auto", scrollbarWidth: "thin" }}>
+                <Box sx={{ overflowY: "auto", scrollbarWidth: "none" }}>
                     <MainContentBox
                         title="Outfits"
                         actions={
@@ -204,53 +209,37 @@ function CharacterImage({ character }: CharacterProps) {
                                 index={index}
                                 value={tabValue}
                             >
-                                <FlexBox
-                                    sx={{
-                                        alignItems: "flex-start",
-                                        justifyContent: "space-between",
-                                        flexWrap: {
-                                            xs: "wrap",
-                                            sm: "nowrap",
-                                        },
-                                    }}
-                                >
-                                    <Stack
-                                        spacing={1}
+                                <Box sx={{ minHeight: "96px" }}>
+                                    <TextStyled
+                                        variant="h5-styled"
+                                        gutterBottom
+                                    >
+                                        {outfit.displayName || outfit.name}
+                                    </TextStyled>
+                                    <Text
                                         sx={{
-                                            width: {
-                                                xs: "100%",
-                                                sm: "50%",
-                                            },
+                                            color: theme.text.description,
                                         }}
                                     >
-                                        <TextStyled variant="h6-styled">
-                                            {outfit.displayName}
-                                        </TextStyled>
-                                        <Text
-                                            sx={{
-                                                color: theme.text.description,
+                                        {parse(outfit.description)}
+                                    </Text>
+                                </Box>
+                                <Fade in={index === tabValue} timeout={500}>
+                                    <Card elevation={0}>
+                                        <Image
+                                            src={imgSrcSplash}
+                                            alt={outfit.name}
+                                            style={{
+                                                width: "100%",
+                                                height: "100%",
+                                                objectFit: "cover",
+                                                overflowClipMargin: "unset",
+                                                transform:
+                                                    "translate(0px, -32px)",
                                             }}
-                                        >
-                                            {outfit.description}
-                                        </Text>
-                                    </Stack>
-                                    <Fade in={index === tabValue} timeout={500}>
-                                        <Card elevation={0}>
-                                            <Image
-                                                src={imgSrcSplash}
-                                                alt={outfit.name}
-                                                style={{
-                                                    width: "100%",
-                                                    height: "600px",
-                                                    objectFit: "cover",
-                                                    overflowClipMargin: "unset",
-                                                    transform:
-                                                        "translate(0px, -32px)",
-                                                }}
-                                            />
-                                        </Card>
-                                    </Fade>
-                                </FlexBox>
+                                        />
+                                    </Card>
+                                </Fade>
                             </TabPanel>
                         ))}
                     </MainContentBox>
