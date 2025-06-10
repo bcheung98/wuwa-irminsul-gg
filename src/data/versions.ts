@@ -1,5 +1,6 @@
 // MAKE SURE TO CHANGE THIS EVERY UPDATE!
 export const updates = [
+    { version: "2.4", name: "Lightly We Toss the Crown" },
     { version: "2.3", name: "Fiery Arpeggio of Summer Reunion" },
     { version: "2.2", name: "Tangled Truth in Inverted Tower" },
     { version: "2.1", name: "Waves Sing, and the Cerulean Bird Calls" },
