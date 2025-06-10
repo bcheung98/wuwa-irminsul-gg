@@ -71,7 +71,13 @@ function CharacterCombatRoles({ roles }: { roles: CombatRole[] }) {
                     </IconButton>
                 </StyledTooltip>
             </Stack>
-            <Dialog open={open} onClose={handleClose} maxWidth="sm" fullWidth>
+            <Dialog
+                open={open}
+                onClose={handleClose}
+                maxWidth="sm"
+                fullWidth
+                disableScrollLock
+            >
                 <Box sx={{ overflowY: "auto", scrollbarWidth: "thin" }}>
                     <MainContentBox
                         title="Combat Roles"
