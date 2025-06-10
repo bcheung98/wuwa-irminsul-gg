@@ -46,13 +46,18 @@ function CharacterPassive({
                                     index + 1
                                 }`}
                                 alt={`${name.toLowerCase()}_passive${
-                                    index - 1
+                                    index + 1
                                 }`}
                                 style={theme.styles.skillIcon(element)}
                             />
-                            <TextStyled variant="h6-styled">
-                                {passives[index].name}
-                            </TextStyled>
+                            <Box>
+                                <TextStyled variant="h6-styled">
+                                    {passives[index].name}
+                                </TextStyled>
+                                <TextStyled sx={{ fontStyle: "italic" }}>
+                                    Inherent Skill
+                                </TextStyled>
+                            </Box>
                         </Stack>
                         <Text
                             component="span"
@@ -64,10 +69,8 @@ function CharacterPassive({
                         </Text>
                     </Box>
                     <CharacterSkillLevelUpCost
-                        type="bonusStat"
-                        skillKey={
-                            `bonusStat${index + 1}` as LevelUpCostSkillKeys
-                        }
+                        type="passive"
+                        skillKey={`passive${index + 1}` as LevelUpCostSkillKeys}
                         element={element}
                         materials={materials}
                     />

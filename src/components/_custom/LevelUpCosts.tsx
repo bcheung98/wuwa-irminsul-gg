@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 
 // Component imports
 import MaterialImage from "custom/MaterialImage";
@@ -71,7 +71,7 @@ function LevelUpCosts({
     const levels = getLevels(skillKey, type, rarity);
     const minDistance = 1;
     const maxValue = levels.length;
-    const [values, setValues] = React.useState([1, maxValue]);
+    const [values, setValues] = useState([1, maxValue]);
     const handleSliderChange = (
         _: Event,
         newValue: number | number[],
@@ -176,10 +176,10 @@ function getLevels(
         case "skill":
         case "ultimate":
         case "circuit":
-        case "passive1":
-        case "passive2":
         case "intro":
             return range(1, 10);
+        case "passive1":
+        case "passive2":
         default:
             return [];
     }
@@ -283,10 +283,6 @@ function getCosts({
                 credits: {
                     Credit: levelUpCost.credits.Credit,
                 },
-                weeklyBossMat: {
-                    [`${mats.weeklyBossMat}` as WeeklyBossMaterial]:
-                        levelUpCost.weeklyBossMat.weeklyBossMat,
-                },
                 forgeryMat: {
                     [`${mats.forgeryMat}1` as ForgeryMaterial]:
                         levelUpCost.forgeryMat.forgeryMat1,
@@ -307,6 +303,10 @@ function getCosts({
                     [`${mats.commonMat}4` as CommonMaterial]:
                         levelUpCost.commonMat.commonMat4,
                 },
+                weeklyBossMat: {
+                    [`${mats.weeklyBossMat}` as WeeklyBossMaterial]:
+                        levelUpCost.weeklyBossMat.weeklyBossMat,
+                },
             } as TotalCostObject;
             break;
         case "passive1":
@@ -318,10 +318,6 @@ function getCosts({
             costs = {
                 credits: {
                     Credit: levelUpCost.credits.Credit,
-                },
-                weeklyBossMat: {
-                    [`${mats.weeklyBossMat}` as WeeklyBossMaterial]:
-                        levelUpCost.weeklyBossMat.weeklyBossMat,
                 },
                 forgeryMat: {
                     [`${mats.forgeryMat}2` as ForgeryMaterial]:
@@ -335,6 +331,10 @@ function getCosts({
                     [`${mats.commonMat}3` as CommonMaterial]:
                         levelUpCost.commonMat.commonMat3,
                 },
+                weeklyBossMat: {
+                    [`${mats.weeklyBossMat}` as WeeklyBossMaterial]:
+                        levelUpCost.weeklyBossMat.weeklyBossMat,
+                },
             } as TotalCostObject;
             break;
         case "bonusStat1":
@@ -347,10 +347,6 @@ function getCosts({
                 credits: {
                     Credit: levelUpCost.credits.Credit,
                 },
-                weeklyBossMat: {
-                    [`${mats.weeklyBossMat}` as WeeklyBossMaterial]:
-                        levelUpCost.weeklyBossMat.weeklyBossMat,
-                },
                 forgeryMat: {
                     [`${mats.forgeryMat}3` as ForgeryMaterial]:
                         levelUpCost.forgeryMat.forgeryMat3,
@@ -362,6 +358,10 @@ function getCosts({
                         levelUpCost.commonMat.commonMat3,
                     [`${mats.commonMat}4` as CommonMaterial]:
                         levelUpCost.commonMat.commonMat4,
+                },
+                weeklyBossMat: {
+                    [`${mats.weeklyBossMat}` as WeeklyBossMaterial]:
+                        levelUpCost.weeklyBossMat.weeklyBossMat,
                 },
             } as TotalCostObject;
             break;
