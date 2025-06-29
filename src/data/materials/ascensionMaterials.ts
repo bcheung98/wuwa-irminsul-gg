@@ -152,6 +152,15 @@ export const ascensionMaterials = [
         rarity: 1,
         release: { version: "2.4" },
     },
+    {
+        id: "ascensionMat_17",
+        category: "ascensionMat",
+        tag: "ascensionMat_17",
+        name: "ascensionMat_17",
+        displayName: "ascensionMat_17",
+        rarity: 1,
+        release: { version: "2.5" },
+    },
 ] as const;
 
 export const ascensionMatNames = ascensionMaterials.map((mat) => mat.tag);
