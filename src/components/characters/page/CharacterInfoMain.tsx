@@ -1,3 +1,5 @@
+import parse from "html-react-parser";
+
 // Component imports
 import CharacterCombatRoles from "./CharacterCombatRoles";
 import RarityStars from "custom/RarityStars";
@@ -75,8 +77,11 @@ function CharacterInfoMain({ character }: CharacterProps) {
                     </Box>
                 </FlexBox>
                 <CharacterCombatRoles roles={combatRoles} />
-                <TextStyled variant="subtitle1-styled" sx={{ fontStyle: "italic" }}>
-                    {description}
+                <TextStyled
+                    variant="subtitle1-styled"
+                    sx={{ fontStyle: "italic" }}
+                >
+                    {parse(description)}
                 </TextStyled>
             </Stack>
         </Card>
