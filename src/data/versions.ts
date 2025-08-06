@@ -1,5 +1,6 @@
 // MAKE SURE TO CHANGE THIS EVERY UPDATE!
 export const updates = [
+    { version: "2.5", name: "Unfading Melody of Life" },
     { version: "2.4", name: "Lightly We Toss the Crown" },
     { version: "2.3", name: "Fiery Arpeggio of Summer Reunion" },
     { version: "2.2", name: "Tangled Truth in Inverted Tower" },
