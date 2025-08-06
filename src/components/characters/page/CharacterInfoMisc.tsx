@@ -25,7 +25,7 @@ function CharacterInfoMisc({ character }: CharacterProps) {
 
     const region = useAppSelector(selectServer);
 
-    const { birthday, nation, voiceActors, release } = { ...character };
+    const { nation, voiceActors, release } = { ...character };
     const releaseDate =
         release.date !== ""
             ? createDateObject({ date: release.date, region: region }).date
@@ -34,7 +34,7 @@ function CharacterInfoMisc({ character }: CharacterProps) {
 
     const rows = [
         { key: "Nation", value: nation },
-        { key: "Birthday", value: birthday || "---" },
+        // { key: "Birthday", value: birthday || "---" },
         { key: "Release", value: `${releaseDate} (${releaseVersion})` },
         { key: "Voice Actor (EN)", value: voiceActors["en"] || "---" },
         { key: "Voice Actor (JP)", value: voiceActors["jp"] || "---" },
