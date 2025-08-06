@@ -17,7 +17,6 @@ import RestartAltIcon from "@mui/icons-material/RestartAlt";
 import HelpIcon from "@mui/icons-material/Help";
 
 // Helper imports
-import { objectKeys } from "helpers/utils";
 import { useAppDispatch, useAppSelector } from "helpers/hooks";
 import {
     activeEchoFilters,
@@ -31,7 +30,7 @@ import { echoClasses, echoes } from "data/common";
 import { sonataEffects } from "data/sonataEffects";
 
 // Type imports
-import { EchoClass, EchoSonata } from "types/echo";
+import { EchoClass } from "types/echo";
 
 function EchoFilters({ handleClose }: { handleClose: (arg0: any) => void }) {
     const theme = useTheme();
@@ -65,20 +64,20 @@ function EchoFilters({ handleClose }: { handleClose: (arg0: any) => void }) {
         {
             name: "Sonata Effects",
             value: filters.sonata,
-            onChange: (_: BaseSyntheticEvent, newValues: EchoSonata[]) =>
+            onChange: (_: BaseSyntheticEvent, newValues: string[]) =>
                 dispatch(setSonata(newValues)),
-            buttons: objectKeys(sonataEffects).map((sonata) => ({
-                value: sonata,
+            buttons: sonataEffects.map((sonata) => ({
+                value: sonata.name,
                 icon: (
                     <Image
-                        src={`echoes/sonata/${sonata}`}
-                        alt={sonata}
+                        src={`echoes/sonata/${sonata.name}`}
+                        alt={sonata.name}
                         style={{
                             width: "32px",
                             padding: "4px",
                             borderRadius: "4px",
                         }}
-                        tooltip={sonata}
+                        tooltip={sonata.displayName}
                     />
                 ),
             })),

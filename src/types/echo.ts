@@ -1,5 +1,4 @@
 import { echoes } from "data/common";
-import { sonataEffects } from "data/sonataEffects";
 import { Version } from "./version";
 
 export interface EchoProps {
@@ -14,7 +13,7 @@ export interface Echo {
     class: EchoClass;
     cost: EchoCost;
     skill: EchoSkill;
-    sonata: EchoSonata[];
+    sonata: string[];
     description: string;
     hasPhantom: boolean;
     type: string;
@@ -31,4 +30,10 @@ export interface EchoSkill {
     scaling: string[][];
 }
 
-export type EchoSonata = keyof typeof sonataEffects;
+export interface SonataEffect {
+    name: string;
+    displayName: string;
+    "2pc"?: string;
+    "3pc"?: string;
+    "5pc"?: string;
+}

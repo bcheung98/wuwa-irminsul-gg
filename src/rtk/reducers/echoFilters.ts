@@ -1,11 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { objectKeys } from "helpers/utils";
 import { RootState } from "rtk/store";
-import { EchoClass, EchoSonata } from "types/echo";
+import { EchoClass } from "types/echo";
 
 export interface EchoFilterState {
     class: EchoClass[];
-    sonata: EchoSonata[];
+    sonata: string[];
     uniqueSonata: boolean;
 }
 
@@ -24,7 +24,7 @@ export const echoFilterSlice = createSlice({
         setClass: (state, action: PayloadAction<EchoClass[]>) => {
             state.class = action.payload;
         },
-        setSonata: (state, action: PayloadAction<EchoSonata[]>) => {
+        setSonata: (state, action: PayloadAction<string[]>) => {
             state.sonata = action.payload;
         },
         toggleUniqueSonata: (state) => {

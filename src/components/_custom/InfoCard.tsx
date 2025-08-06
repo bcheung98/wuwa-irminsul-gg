@@ -22,7 +22,7 @@ import { getAscensionMaterial } from "data/materials/ascensionMaterials";
 
 // Type imports
 import { Element, Rarity, WeaponType } from "types/_common";
-import { EchoCost, EchoSonata } from "types/echo";
+import { EchoCost } from "types/echo";
 import { CharacterMaterials } from "types/materials";
 import { formatWeaponStats, WeaponSubStat } from "data/weaponStats";
 
@@ -39,7 +39,7 @@ interface InfoCardProps {
         element?: Element;
         weaponType?: WeaponType;
         subStat?: WeaponSubStat;
-        sonata?: EchoSonata[];
+        sonata?: string[];
     };
     infoSecondary?: {
         cost?: EchoCost;
