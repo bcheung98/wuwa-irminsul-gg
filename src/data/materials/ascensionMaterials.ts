@@ -155,9 +155,9 @@ export const ascensionMaterials = [
     {
         id: "ascensionMat_17",
         category: "ascensionMat",
-        tag: "ascensionMat_17",
-        name: "ascensionMat_17",
-        displayName: "ascensionMat_17",
+        tag: "Afterlife",
+        name: "Afterlife",
+        displayName: '"Afterlife"',
         rarity: 1,
         release: { version: "2.5" },
     },
