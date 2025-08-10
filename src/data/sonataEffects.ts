@@ -108,4 +108,14 @@ export const sonataEffects: SonataEffect[] = [
         displayName: "Dream of the Lost",
         "3pc": "Holding 0 Resonance Energy increases Crit. Rate by 20% and grants 35% Echo Skill DMG Bonus.",
     },
+    {
+        name: "Crown of Valor",
+        displayName: "Crown of Valor",
+        "3pc": "Upon gaining a Shield, increase the Resonator's ATK by 6% and Crit. DMG by 4% for 4s. This effect can be triggered once every 0.5s and stacks up to 5 times.",
+    },
+    {
+        name: "Law of Harmony",
+        displayName: "Law of Harmony",
+        "3pc": "Casting Echo Skill grants 8% Echo Skill DMG Bonus to all Resonators in the team and 5% Heavy Attack DMG Bonus to the caster for 30s, stacking up to 4 times.",
+    },
 ];

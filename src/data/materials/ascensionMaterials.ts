@@ -161,6 +161,33 @@ export const ascensionMaterials = [
         rarity: 1,
         release: { version: "2.5" },
     },
+    {
+        id: "ascensionMat_18",
+        category: "ascensionMat",
+        tag: "Luminous Calendula",
+        name: "Luminous Calendula",
+        displayName: "Luminous Calendula",
+        rarity: 1,
+        release: { version: "2.6" },
+    },
+    {
+        id: "ascensionMat_19",
+        category: "ascensionMat",
+        tag: "Silverglow Bloom",
+        name: "Silverglow Bloom",
+        displayName: "Silverglow Bloom",
+        rarity: 1,
+        release: { version: "2.6" },
+    },
+    {
+        id: "ascensionMat_20",
+        category: "ascensionMat",
+        tag: "Stone Rose",
+        name: "Stone Rose",
+        displayName: "Stone Rose",
+        rarity: 1,
+        release: { version: "2.6" },
+    },
 ] as const;
 
 export const ascensionMatNames = ascensionMaterials.map((mat) => mat.tag);

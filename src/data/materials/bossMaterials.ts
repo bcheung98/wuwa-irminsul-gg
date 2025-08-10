@@ -158,6 +158,26 @@ export const bossMaterials = [
         rarity: 4,
         release: { version: "2.5" },
     },
+    {
+        id: "bossMat_16",
+        category: "bossMat",
+        tag: "Abyssal Husk",
+        name: "Abyssal Husk",
+        displayName: "Abyssal Husk",
+        source: "Lady of the Sea",
+        rarity: 4,
+        release: { version: "2.6" },
+    },
+    {
+        id: "bossMat_17",
+        category: "bossMat",
+        tag: "Blighted Crown of Puppet King",
+        name: "Blighted Crown of Puppet King",
+        displayName: "Blighted Crown of Puppet King",
+        source: "The False Sovereign",
+        rarity: 4,
+        release: { version: "2.6" },
+    },
 ] as const;
 
 export const bossMatNames = bossMaterials.map((mat) => mat.tag);
