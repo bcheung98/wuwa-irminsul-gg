@@ -116,6 +116,6 @@ export const sonataEffects: SonataEffect[] = [
     {
         name: "Law of Harmony",
         displayName: "Law of Harmony",
-        "3pc": "Casting Echo Skill grants 8% Echo Skill DMG Bonus to all Resonators in the team and 5% Heavy Attack DMG Bonus to the caster for 30s, stacking up to 4 times.",
+        "3pc": "Casting Echo Skill grants 30% Heavy Attack DMG Bonus to the caster for 4s. Additionally, all Resonators in the team gain 4% Echo Skill DMG Bonus for 30s, stacking up to 4 times. Echoes of the same name can only trigger this effect once. The record of Echo triggering this effect is cleared along with this effect. At 4 stacks, casting Echo Skill again resets the duration of this effect.",
     },
 ];
