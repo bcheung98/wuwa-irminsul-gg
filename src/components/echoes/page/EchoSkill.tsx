@@ -91,22 +91,24 @@ function EchoSkill({ echo }: EchoProps) {
                         {skill.cooldown}s
                     </span>
                 </Text>
-                <Box sx={{ width: { xs: "90%", md: "30vw" }, mt: "16px" }}>
-                    <StyledSlider
-                        value={sliderValue}
-                        marks={marks}
-                        step={1}
-                        min={2}
-                        max={5}
-                        onChange={handleSliderChange}
-                        size={matches_md_up ? "medium" : "small"}
-                        sx={{
-                            minWidth: "100px",
-                            maxWidth: "200px",
-                            ml: "8px",
-                        }}
-                    />
-                </Box>
+                {skill.scaling.length > 0 && (
+                    <Box sx={{ width: { xs: "90%", md: "30vw" }, mt: "16px" }}>
+                        <StyledSlider
+                            value={sliderValue}
+                            marks={marks}
+                            step={1}
+                            min={2}
+                            max={5}
+                            onChange={handleSliderChange}
+                            size={matches_md_up ? "medium" : "small"}
+                            sx={{
+                                minWidth: "100px",
+                                maxWidth: "200px",
+                                ml: "8px",
+                            }}
+                        />
+                    </Box>
+                )}
             </Stack>
         </MainContentBox>
     );
