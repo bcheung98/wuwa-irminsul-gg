@@ -54,7 +54,7 @@ function PlannerList({ data }: { data: string[] }) {
         if (variant === "character") {
             data = characters.find((char) => char.id === item)!;
             name = data.fullName;
-            imgURL = `characters/avatars/${data.name}`;
+            imgURL = `characters/icons/${data.name}`;
         } else {
             data = weapons.find((wep) => wep.id === item)!;
             name = data.displayName;
