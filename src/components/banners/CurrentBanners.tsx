@@ -117,7 +117,7 @@ function CurrentBanners() {
                     {characterBannerData.length > 0 && (
                         <Box>
                             <TextStyled variant="h6-styled" sx={{ mb: "8px" }}>
-                                Character Banner
+                                Resonator Banner
                             </TextStyled>
                             <Stack spacing={1}>
                                 {characterBannerData.map((banner, index) => (
