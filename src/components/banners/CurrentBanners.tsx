@@ -7,7 +7,7 @@ import { FlexBox } from "styled/StyledBox";
 import { TextStyled } from "styled/StyledTypography";
 
 // MUI imports
-import { useTheme, Box, Stack, LinearProgress } from "@mui/material";
+import { Box, LinearProgress, Stack } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 
 // Helper imports
@@ -17,16 +17,13 @@ import { selectWeapons } from "reducers/weapon";
 import { selectCharacterBanners, selectWeaponBanners } from "reducers/banner";
 import { selectServer } from "reducers/settings";
 import { createDateObject, isCurrentBanner } from "helpers/dates";
+import { createBannerData, getRarity } from "helpers/createBannerData";
 import { isTBA } from "helpers/utils";
-import { createBannerItems } from "./BannerListRow";
 
 // Type imports
-import { Rarity } from "types/_common";
-import { Banner } from "types/banner";
+import { Banner, BannerData, BannerType } from "types/banner";
 
 function CurrentBanners() {
-    const theme = useTheme();
-
     const region = useAppSelector(selectServer);
 
     const characters = useAppSelector(selectCharacters);
@@ -49,8 +46,66 @@ function CurrentBanners() {
     const activeBanners =
         [...currentCharacterBanners, ...currentWeaponBanners].length > 0;
 
-    const getRarity = (name: string, rarity: Rarity) =>
-        !isTBA(name) ? rarity : 1;
+    const characterBannerData: BannerData[] = [];
+    currentCharacterBanners.forEach((banner) => {
+        const fiveStars = banner.fiveStars.map((item) =>
+            createBannerData(item, "character", characters, weapons)
+        );
+        const fourStars = banner.fourStars.map((item) =>
+            createBannerData(item, "character", characters, weapons)
+        );
+        characterBannerData.push({
+            ...banner,
+            fiveStars: fiveStars,
+            fourStars: fourStars,
+        });
+    });
+
+    const weaponBannerData: BannerData[] = [];
+    currentWeaponBanners.forEach((banner) => {
+        const fiveStars = banner.fiveStars.map((item) =>
+            createBannerData(item, "weapon", characters, weapons)
+        );
+        const fourStars = banner.fourStars.map((item) =>
+            createBannerData(item, "weapon", characters, weapons)
+        );
+        weaponBannerData.push({
+            ...banner,
+            fiveStars: fiveStars,
+            fourStars: fourStars,
+        });
+    });
+
+    const renderBanner = (banner: BannerData, type: BannerType) => {
+        return (
+            <>
+                <Grid container spacing={1}>
+                    {[...banner.fiveStars, ...banner.fourStars].map(
+                        (item, i) => (
+                            <InfoCard
+                                key={`${item.name}-${i}`}
+                                id={`${item.displayName}-currentBanner`.toLowerCase()}
+                                variant="icon"
+                                type={type}
+                                name={item.name}
+                                displayName={item.displayName}
+                                rarity={getRarity(item.name, item.rarity)}
+                                disableLink={isTBA(item.name)}
+                                disableZoomOnHover={isTBA(item.name)}
+                                loading={loading}
+                            />
+                        )
+                    )}
+                </Grid>
+                <Countdown
+                    date={createDateObject({
+                        date: banner.end,
+                        region: region,
+                    })}
+                />
+            </>
+        );
+    };
 
     return (
         <MainContentBox
@@ -59,161 +114,29 @@ function CurrentBanners() {
         >
             {activeBanners ? (
                 <FlexBox sx={{ flexWrap: "wrap", columnGap: 8, rowGap: 2 }}>
-                    {currentCharacterBanners.length > 0 && (
+                    {characterBannerData.length > 0 && (
                         <Box>
                             <TextStyled variant="h6-styled" sx={{ mb: "8px" }}>
-                                Resonator Banner
+                                Character Banner
                             </TextStyled>
                             <Stack spacing={1}>
-                                {currentCharacterBanners.map(
-                                    (banner, index) => (
-                                        <Box key={index}>
-                                            <Grid container spacing={1}>
-                                                {createBannerItems(
-                                                    banner.fiveStars,
-                                                    "character"
-                                                ).map((item, i) => (
-                                                    <InfoCard
-                                                        key={`${item.name}-${i}`}
-                                                        id={`${item.displayName}-currentBanner`.toLowerCase()}
-                                                        variant="icon"
-                                                        type="character"
-                                                        name={item.name}
-                                                        displayName={
-                                                            item.displayName
-                                                        }
-                                                        rarity={getRarity(
-                                                            item.name,
-                                                            5
-                                                        )}
-                                                        disableLink={isTBA(
-                                                            item.name
-                                                        )}
-                                                        disableZoomOnHover={isTBA(
-                                                            item.name
-                                                        )}
-                                                        backgroundColor={theme.background(
-                                                            0
-                                                        )}
-                                                        loading={loading}
-                                                    />
-                                                ))}
-                                                {createBannerItems(
-                                                    banner.fourStars,
-                                                    "character"
-                                                ).map((item, i) => (
-                                                    <InfoCard
-                                                        key={`${item.name}-${i}`}
-                                                        id={`${item.displayName}-currentBanner`.toLowerCase()}
-                                                        variant="icon"
-                                                        type="character"
-                                                        name={item.name}
-                                                        displayName={
-                                                            item.displayName
-                                                        }
-                                                        rarity={getRarity(
-                                                            item.name,
-                                                            4
-                                                        )}
-                                                        disableLink={isTBA(
-                                                            item.name
-                                                        )}
-                                                        disableZoomOnHover={isTBA(
-                                                            item.name
-                                                        )}
-                                                        backgroundColor={theme.background(
-                                                            0
-                                                        )}
-                                                        loading={loading}
-                                                    />
-                                                ))}
-                                            </Grid>
-                                            <Countdown
-                                                date={createDateObject({
-                                                    date: banner.end,
-                                                    region: region,
-                                                })}
-                                            />
-                                        </Box>
-                                    )
-                                )}
+                                {characterBannerData.map((banner, index) => (
+                                    <Box key={index}>
+                                        {renderBanner(banner, "character")}
+                                    </Box>
+                                ))}
                             </Stack>
                         </Box>
                     )}
-                    {currentWeaponBanners.length > 0 && (
+                    {weaponBannerData.length > 0 && (
                         <Box>
                             <TextStyled variant="h6-styled" sx={{ mb: "8px" }}>
                                 Weapon Banner
                             </TextStyled>
                             <Stack spacing={1}>
-                                {currentWeaponBanners.map((banner, index) => (
+                                {weaponBannerData.map((banner, index) => (
                                     <Box key={index}>
-                                        <Grid container spacing={1}>
-                                            {createBannerItems(
-                                                banner.fiveStars,
-                                                "weapon"
-                                            ).map((item, i) => (
-                                                <InfoCard
-                                                    key={`${item.name}-${i}`}
-                                                    id={`${item.displayName}-currentBanner`.toLowerCase()}
-                                                    variant="icon"
-                                                    type="weapon"
-                                                    name={item.name}
-                                                    displayName={
-                                                        item.displayName
-                                                    }
-                                                    rarity={getRarity(
-                                                        item.name,
-                                                        5
-                                                    )}
-                                                    disableLink={isTBA(
-                                                        item.name
-                                                    )}
-                                                    disableZoomOnHover={isTBA(
-                                                        item.name
-                                                    )}
-                                                    backgroundColor={theme.background(
-                                                        0
-                                                    )}
-                                                    loading={loading}
-                                                />
-                                            ))}
-                                            {createBannerItems(
-                                                banner.fourStars,
-                                                "weapon"
-                                            ).map((item, i) => (
-                                                <InfoCard
-                                                    key={`${item.name}-${i}`}
-                                                    id={`${item.displayName}-currentBanner`.toLowerCase()}
-                                                    variant="icon"
-                                                    type="weapon"
-                                                    name={item.name}
-                                                    displayName={
-                                                        item.displayName
-                                                    }
-                                                    rarity={getRarity(
-                                                        item.name,
-                                                        4
-                                                    )}
-                                                    disableLink={isTBA(
-                                                        item.name
-                                                    )}
-                                                    disableZoomOnHover={isTBA(
-                                                        item.name
-                                                    )}
-                                                    backgroundColor={theme.background(
-                                                        0
-                                                    )}
-                                                    loading={loading}
-                                                />
-                                            ))}
-                                        </Grid>
-                                        <Countdown
-                                            date={createDateObject({
-                                                date: banner.end,
-                                                region: region,
-                                            })}
-                                        />
+                                        {renderBanner(banner, "weapon")}
                                     </Box>
                                 ))}
                             </Stack>
