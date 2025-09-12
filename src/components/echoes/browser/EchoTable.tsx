@@ -73,9 +73,11 @@ function EchoTable({ echoes }: { echoes: Echo[] }) {
                         headColumns={headColumns}
                     />
                     <TableBody>
-                        {rows.sort(getComparator(order, orderBy)).map((row) => (
-                            <EchoTableRow key={row.displayName} row={row} />
-                        ))}
+                        {rows
+                            .sort(getComparator(order, orderBy, "displayName"))
+                            .map((row) => (
+                                <EchoTableRow key={row.displayName} row={row} />
+                            ))}
                     </TableBody>
                 </Table>
             </TableContainer>

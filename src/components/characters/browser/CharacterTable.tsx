@@ -68,9 +68,14 @@ function CharacterTable({ characters }: { characters: Character[] }) {
                         headColumns={headColumns}
                     />
                     <TableBody>
-                        {rows.sort(getComparator(order, orderBy)).map((row) => (
-                            <CharacterTableRow key={row.fullName} row={row} />
-                        ))}
+                        {rows
+                            .sort(getComparator(order, orderBy, "fullName"))
+                            .map((row) => (
+                                <CharacterTableRow
+                                    key={row.fullName}
+                                    row={row}
+                                />
+                            ))}
                     </TableBody>
                 </Table>
             </TableContainer>

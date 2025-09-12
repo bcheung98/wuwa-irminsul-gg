@@ -53,14 +53,19 @@ export const filterEchoes = (
                         echoData[a.class].rarity,
                         echoData[b.class].rarity,
                         reverse
-                    ) || a.displayName.localeCompare(b.displayName)
+                    ) || sortBy(b.displayName, a.displayName)
             );
             break;
         case "release":
             echos = echos.sort(
                 (a, b) =>
-                    sortBy(a.id, b.id, reverse) ||
-                    a.displayName.localeCompare(b.displayName)
+                    sortBy(a.release.version, b.release.version, reverse) ||
+                    sortBy(
+                        echoData[b.class].rarity,
+                        echoData[a.class].rarity,
+                        !reverse
+                    ) ||
+                    sortBy(b.displayName, a.displayName, !reverse)
             );
             break;
         case "element":

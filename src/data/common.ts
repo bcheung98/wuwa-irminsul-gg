@@ -8,6 +8,14 @@ export const elements = [
     "Spectro",
     "Havoc",
 ] as const;
+export enum ElementMap {
+    "Fusion",
+    "Glacio",
+    "Aero",
+    "Electro",
+    "Spectro",
+    "Havoc",
+}
 
 export const weapons = [
     "Sword",
@@ -16,6 +24,13 @@ export const weapons = [
     "Pistols",
     "Rectifier",
 ] as const;
+export enum WeaponMap {
+    "Sword",
+    "Broadblade",
+    "Gauntlet",
+    "Pistols",
+    "Rectifier",
+}
 
 export const rarities = [5, 4, 3, 2, 1] as const;
 

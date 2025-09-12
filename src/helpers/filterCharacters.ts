@@ -3,6 +3,7 @@ import { CharacterFilterState } from "reducers/characterFilters";
 import { BrowserSettings } from "reducers/browser";
 import { createDateObject } from "./dates";
 import { sortBy } from "./utils";
+import { ElementMap, WeaponMap } from "data/common";
 
 export function filterCharacters(
     characters: Character[],
@@ -77,21 +78,27 @@ export function filterCharacters(
             chars = chars.sort(
                 (a, b) =>
                     sortBy(a.rarity, b.rarity, reverse) ||
-                    a.fullName.localeCompare(b.fullName)
+                    sortBy(b.fullName, a.fullName)
             );
             break;
         case "element":
             chars = chars.sort(
                 (a, b) =>
-                    sortBy(b.element, a.element, reverse) ||
-                    a.fullName.localeCompare(b.fullName)
+                    sortBy(
+                        ElementMap[b.element],
+                        ElementMap[a.element],
+                        reverse
+                    ) ||
+                    sortBy(a.rarity, b.rarity) ||
+                    sortBy(b.fullName, a.fullName)
             );
             break;
         case "weapon":
             chars = chars.sort(
                 (a, b) =>
-                    sortBy(b.weapon, a.weapon, reverse) ||
-                    a.fullName.localeCompare(b.fullName)
+                    sortBy(WeaponMap[b.weapon], WeaponMap[a.weapon], reverse) ||
+                    sortBy(a.rarity, b.rarity) ||
+                    sortBy(b.fullName, a.fullName)
             );
             break;
         case "release":
@@ -105,7 +112,9 @@ export function filterCharacters(
                             date: b.release.date,
                         }).obj.getTime(),
                         reverse
-                    ) || sortBy(b.fullName, a.fullName, !reverse)
+                    ) ||
+                    sortBy(b.rarity, a.rarity, !reverse) ||
+                    sortBy(b.fullName, a.fullName, !reverse)
             );
             break;
     }

@@ -2,6 +2,7 @@ import { Weapon } from "types/weapon";
 import { WeaponFilterState } from "reducers/weaponFilters";
 import { BrowserSettings } from "reducers/browser";
 import { sortBy } from "./utils";
+import { WeaponMap } from "data/common";
 
 export const filterWeapons = (
     weapons: Weapon[],
@@ -56,21 +57,24 @@ export const filterWeapons = (
             weps = weps.sort(
                 (a, b) =>
                     sortBy(a.rarity, b.rarity, reverse) ||
-                    a.displayName.localeCompare(b.displayName)
+                    sortBy(b.displayName, a.displayName)
             );
             break;
         case "weapon":
             weps = weps.sort(
                 (a, b) =>
-                    sortBy(b.type, a.type, reverse) ||
-                    a.displayName.localeCompare(b.displayName)
+                    sortBy(WeaponMap[b.type], WeaponMap[a.type], reverse) ||
+                    sortBy(a.rarity, b.rarity) ||
+                    sortBy(b.displayName, a.displayName)
             );
             break;
         case "release":
             weps = weps.sort(
                 (a, b) =>
+                    sortBy(a.release.version, b.release.version, reverse) ||
+                    sortBy(b.rarity, a.rarity, !reverse) ||
                     sortBy(a.id, b.id, reverse) ||
-                    b.displayName.localeCompare(a.displayName)
+                    sortBy(b.displayName, a.displayName, !reverse)
             );
             break;
         case "element":
