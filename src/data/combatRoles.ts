@@ -51,60 +51,68 @@ export const combatRoles = <const>{
         color: "#77adff",
     },
     "DMG Amplification": {
-        description: "Provides DMG Amplification for a specific teammate",
+        description:
+            "Provides DMG Amplification for a specific Resonator in the team",
         color: "#ff7777",
     },
     "Glacio DMG Amplification": {
         description:
-            "Provides Glacio DMG Amplification for a specific teammate",
+            "Provides Glacio DMG Amplification for a specific Resonator in the team",
         color: "#ff7777",
     },
     "Fusion DMG Amplification": {
         description:
-            "Provides Fusion DMG Amplification for a specific teammate",
+            "Provides Fusion DMG Amplification for a specific Resonator in the team",
         color: "#ff7777",
     },
     "Electro DMG Amplification": {
         description:
-            "Provides Electro DMG Amplification for a specific teammate",
+            "Provides Electro DMG Amplification for a specific Resonator in the team",
         color: "#ff7777",
     },
     "Aero DMG Amplification": {
-        description: "Provides Aero DMG Amplification for a specific teammate",
+        description:
+            "Provides Aero DMG Amplification for a specific Resonator in the team",
         color: "#ff7777",
     },
     "Spectro DMG Amplification": {
         description:
-            "Provides Spectro DMG Amplification for a specific teammate",
+            "Provides Spectro DMG Amplification for a specific Resonator in the team",
         color: "#ff7777",
     },
     "Havoc DMG Amplification": {
-        description: "Provides Havoc DMG Amplification for a specific teammate",
+        description:
+            "Provides Havoc DMG Amplification for a specific Resonator in the team",
         color: "#ff7777",
     },
     "Basic Attack DMG Amplification": {
         description:
-            "Provides Basic Attack DMG Amplification for a specific teammate",
+            "Provides Basic Attack DMG Amplification for a specific Resonator in the team",
         color: "#ff7777",
     },
     "Coordinated Attack DMG Amplification": {
         description:
-            "Provides Coordinated Attack DMG Amplification for a specific teammate",
+            "Provides Coordinated Attack DMG Amplification for a specific Resonator in the team",
         color: "#ff7777",
     },
     "Heavy Attack DMG Amplification": {
         description:
-            "Provides Heavy Attack DMG Amplification for a specific teammate",
+            "Provides Heavy Attack DMG Amplification for a specific Resonator in the team",
         color: "#ff7777",
     },
     "Resonance Skill DMG Amplification": {
         description:
-            "Provides Resonance Skill DMG Amplification for a specific teammate",
+            "Provides Resonance Skill DMG Amplification for a specific Resonator in the team",
         color: "#ff7777",
     },
     "Resonance Liberation DMG Amplification": {
         description:
-            "Provides Resonance Liberation DMG Amplification for a specific teammate",
+            "Provides Resonance Liberation DMG Amplification for a specific Resonator in the team",
+        color: "#ff7777",
+    },
+    "Echo Skill DMG Amplification": {
+        description:
+            "Provides Echo Skill DMG Amplification for a specific Resonator in the team",
         color: "#ff7777",
     },
     "Interruption Resistance Boost": {

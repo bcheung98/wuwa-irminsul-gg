@@ -59,6 +59,16 @@ export const weeklyBossMaterials = [
         rarity: 4,
         release: { version: "2.2" },
     },
+    {
+        id: "weeklyBossMat_6",
+        category: "weeklyBossMat",
+        tag: "weeklyBossMat_6",
+        name: "???",
+        displayName: "???",
+        source: "???",
+        rarity: 4,
+        release: { version: "2.7" },
+    },
 ] as const;
 
 export const weeklyBossMatNames = weeklyBossMaterials.map((mat) => mat.tag);
