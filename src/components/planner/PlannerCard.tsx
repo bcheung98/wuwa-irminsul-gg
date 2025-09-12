@@ -39,6 +39,7 @@ import {
     getHiddenItems,
     getSelectedCharacters,
     getSelectedWeapons,
+    removeItem,
     setPlannerCharacters,
     setPlannerWeapons,
     toggleHidden,
@@ -135,6 +136,7 @@ function PlannerCard({ data }: PlannerCardProps) {
             const newValues = weapons.filter((wep) => wep.name !== name);
             dispatch(setPlannerWeapons(newValues));
         }
+        dispatch(removeItem(data.id));
     };
 
     const iconButtonProps: IconButtonProps = {

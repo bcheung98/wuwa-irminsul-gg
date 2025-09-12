@@ -27,11 +27,13 @@ interface PlannerState {
     totalCost: TotalCostObject;
     characters: CharacterCostObject[];
     weapons: WeaponCostObject[];
+    items: string[];
     hidden: string[];
 }
 
 const storedCharacters = localStorage.getItem("planner/characters") || "null";
 const storedWeapons = localStorage.getItem("planner/weapons") || "null";
+const storedItems = localStorage.getItem("planner/items") || "null";
 const storedHidden = localStorage.getItem("planner/hidden") || "null";
 
 const initialState: PlannerState = {
@@ -57,6 +59,7 @@ const initialState: PlannerState = {
     } as TotalCostObject,
     characters: storedCharacters !== "null" ? JSON.parse(storedCharacters) : [],
     weapons: storedWeapons !== "null" ? JSON.parse(storedWeapons) : [],
+    items: storedItems !== "null" ? JSON.parse(storedItems) : [],
     hidden: storedHidden !== "null" ? JSON.parse(storedHidden) : [],
 };
 
@@ -178,6 +181,15 @@ export const plannerSlice = createSlice({
                 });
             }
         },
+        addItem: (state, action: PayloadAction<string>) => {
+            state.items.push(action.payload);
+        },
+        removeItem: (state, action: PayloadAction<string>) => {
+            state.items.splice(state.items.indexOf(action.payload), 1);
+        },
+        setItems: (state, action: PayloadAction<string[]>) => {
+            state.items = action.payload;
+        },
         toggleHidden: (state, action: PayloadAction<string>) => {
             !state.hidden.includes(action.payload)
                 ? state.hidden.push(action.payload)
@@ -259,6 +271,7 @@ export const plannerSlice = createSlice({
             state.characters,
         getSelectedWeapons: (state): WeaponCostObject[] => state.weapons,
         getTotalCost: (state): TotalCostObject => state.totalCost,
+        getItems: (state): string[] => state.items,
         getHiddenItems: (state): string[] => state.hidden,
     },
 });
@@ -268,6 +281,9 @@ export const {
     setPlannerWeapons,
     updateCharacterCosts,
     updateWeaponCosts,
+    addItem,
+    removeItem,
+    setItems,
     toggleHidden,
 } = plannerSlice.actions;
 
@@ -275,6 +291,7 @@ export const {
     getSelectedCharacters,
     getSelectedWeapons,
     getTotalCost,
+    getItems,
     getHiddenItems,
 } = plannerSlice.selectors;
 
@@ -301,5 +318,13 @@ startAppListening({
     effect: (_, state) => {
         const data = JSON.stringify(state.getState().planner.hidden);
         localStorage.setItem("planner/hidden", data);
+    },
+});
+
+startAppListening({
+    matcher: isAnyOf(addItem, removeItem, setItems),
+    effect: (_, state) => {
+        const data = JSON.stringify(state.getState().planner.items);
+        localStorage.setItem("planner/items", data);
     },
 });
