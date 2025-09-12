@@ -78,7 +78,7 @@ function CharacterCombatRoles({ roles }: { roles: CombatRole[] }) {
                 fullWidth
                 disableScrollLock
             >
-                <Box sx={{ overflowY: "auto", scrollbarWidth: "thin" }}>
+                <Box sx={{ overflowY: "auto", scrollbarWidth: "none" }}>
                     <MainContentBox
                         title="Combat Roles"
                         actions={
@@ -103,12 +103,8 @@ function CharacterCombatRoles({ roles }: { roles: CombatRole[] }) {
                                         src={`tags/${role}`}
                                         alt={role}
                                         style={{
-                                            width: matches_sm_up
-                                                ? "48px"
-                                                : "40px",
-                                            height: matches_sm_up
-                                                ? "48px"
-                                                : "40px",
+                                            width: "40px",
+                                            height: "40px",
                                             padding: "4px",
                                             border: `2px solid ${combatRoles[role].color}`,
                                             borderRadius: "4px",
@@ -116,18 +112,17 @@ function CharacterCombatRoles({ roles }: { roles: CombatRole[] }) {
                                                 theme.appbar.backgroundColor,
                                         }}
                                     />
-                                    <Box>
-                                        <TextStyled variant="h6-styled">
-                                            {role}
-                                        </TextStyled>
+                                    <Stack spacing={0.5}>
+                                        <TextStyled>{role}</TextStyled>
                                         <Text
+                                            variant="body2"
                                             sx={{
                                                 color: theme.text.description,
                                             }}
                                         >
                                             {combatRoles[role].description}
                                         </Text>
-                                    </Box>
+                                    </Stack>
                                 </Stack>
                             ))}
                         </Stack>
