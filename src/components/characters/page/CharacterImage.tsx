@@ -211,7 +211,7 @@ function CharacterImage({ character }: CharacterProps) {
                             >
                                 <Box sx={{ minHeight: "96px" }}>
                                     <TextStyled
-                                        variant="h5-styled"
+                                        variant="h6-styled"
                                         gutterBottom
                                     >
                                         {outfit.displayName || outfit.name}
