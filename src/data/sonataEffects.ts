@@ -123,4 +123,9 @@ export const sonataEffects: SonataEffect[] = [
         displayName: "Flamewing's Shadow",
         "3pc": 'Dealing Echo Skill DMG increases Heavy Attack Crit. Rate by 20% for 6s. Dealing Heavy Attack DMG increases Echo Skill Crit. Rate by 20% for 6s. While both effects are active, gain 16% <span class="text-fusion">Fusion DMG Bonus</span>.',
     },
+    {
+        name: "Thread of Severed Fate",
+        displayName: "Thread of Severed Fate",
+        "3pc": "Inflicting Havoc Bane increases the Resonator's ATK by 20% and grants 30% Resonance Liberation DMG Bonus for 5s.",
+    },
 ];
