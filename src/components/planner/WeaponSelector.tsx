@@ -290,7 +290,9 @@ function filterOptions(
     }
     weps = weps.sort(
         (a, b) =>
-            sortBy(a.rarity, b.rarity) || sortBy(b.displayName, a.displayName)
+            sortBy(a.release.version, b.release.version) ||
+            sortBy(a.rarity, b.rarity) ||
+            sortBy(b.displayName, a.displayName)
     );
 
     return weps;
