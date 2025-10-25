@@ -191,9 +191,9 @@ export const ascensionMaterials = [
     {
         id: "ascensionMat_21",
         category: "ascensionMat",
-        tag: "ascensionMat_21",
-        name: "ascensionMat_21",
-        displayName: "ascensionMat_21",
+        tag: "Summer Flower",
+        name: "Summer Flower",
+        displayName: "Summer Flower",
         rarity: 1,
         release: { version: "2.8" },
     },
