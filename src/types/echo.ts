@@ -31,6 +31,7 @@ export interface EchoSkill {
 }
 
 export interface SonataEffect {
+    id: number;
     name: string;
     displayName: string;
     "2pc"?: string;
